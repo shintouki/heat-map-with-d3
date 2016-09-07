@@ -54,7 +54,8 @@ d3.json(jsonUrl, function(error, json) {
 
   x.domain([data[0].year, data[data.length - 1].year]);
   y.domain([1, 12]);
-
+    
+  // Color scale for different temperatures
   let colorScale = d3.scale.quantile()
     .domain([0, d3.max(data, function(d) {
       return d.variance + baseTemp;
@@ -113,7 +114,7 @@ d3.json(jsonUrl, function(error, json) {
       let degreeSign = String.fromCharCode(176);
       let varianceTemp = d.variance.toFixed(3) + " " + degreeSign + "C";
       let actualTemp = (d.variance + baseTemp).toFixed(3) + " " + degreeSign + "C";
-
+      // Tooltip effects
       tooltip.transition()
         .duration(200)
         .style("opacity", 0.9);
